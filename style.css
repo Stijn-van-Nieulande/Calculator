@@ -6,6 +6,9 @@ body {
 	background-size: cover;
 	background-position: center center;
 }
+*:focus {
+    outline: none !important;
+}
 
 hr.white {
 	border-top: 5px solid #eceeef;

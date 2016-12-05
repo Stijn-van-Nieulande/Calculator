@@ -1,22 +1,59 @@
-var calcString = "";
+var calcStringOLD = "";
+var calcStringNEW = "";
+var lastExpression = "";
+var calculated = false;
+var first = true;
 var calculator = {};
 
 calculator.add = function (s) {
-	calcString += s;
+	if (first) {
+		calcStringOLD += s;
+	} else {
+		calcStringNEW += s;
+	}
+	calculated = false;
 	calculator.update();
+}
+calculator.execExpr = function (s) {
+	calculator.calc();
+	calculated = false;
+	lastExpression = s;
 }
 calculator.clear = function () {
-	calcString = "";
-	calculator.update();
-}
-calculator.undo = function () {
-	calcString = calcString.slice(0, -1);
+	calcStringOLD = "";
+	calcStringNEW = "";
+	lastExpression = "";
+	calculated = false;
+	first = true;
 	calculator.update();
 }
 calculator.calc = function () {
-	calcString = eval(calcString);
+	console.log(calcStringOLD + " | " + calcStringNEW);
+	
+	calcStringOLD = (calcStringOLD == "") ? 0 : calcStringOLD;
+	calcStringNEW = (calcStringNEW == "") ? 0 : calcStringNEW;
+	
+	switch (lastExpression) {
+		case "+":
+			calcStringOLD = (parseFloat(calcStringOLD) + parseFloat(calcStringNEW));
+			break;
+		case "-":
+			calcStringOLD = (parseFloat(calcStringOLD) - parseFloat(calcStringNEW));
+			break;
+		case "/":
+			calcStringOLD = (parseFloat(calcStringOLD) / parseFloat(calcStringNEW));
+			break;
+		case "*":
+			calcStringOLD = (parseFloat(calcStringOLD) * parseFloat(calcStringNEW));
+			break;
+	}
+	calcStringNEW = "";
+	lastExpression = "";
+	calculated = true;
+	first = false;
 	calculator.update();
 }
 calculator.update = function () {
-	calc.value = calcString;
+	calc.value = (calculated || first) ? calcStringOLD : calcStringNEW;
+	calc.value = Math.round(calc.value * 1000) / 1000;
 }
