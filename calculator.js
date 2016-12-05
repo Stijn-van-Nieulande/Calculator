@@ -28,8 +28,6 @@ calculator.clear = function () {
 	calculator.update();
 }
 calculator.calc = function () {
-	console.log(calcStringOLD + " | " + calcStringNEW);
-	
 	calcStringOLD = (calcStringOLD == "") ? 0 : calcStringOLD;
 	calcStringNEW = (calcStringNEW == "") ? 0 : calcStringNEW;
 	
