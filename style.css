@@ -1,0 +1,33 @@
+html, body {
+	height: 100%;
+}
+body {
+	background-image: url('./background.jpg');
+	background-size: cover;
+	background-position: center center;
+}
+
+hr.white {
+	border-top: 5px solid #eceeef;
+}
+
+.jumbotron {
+	padding-top: 1rem;
+	padding-bottom: 1rem;
+}
+.btn-col {
+	padding: 2px;
+}
+
+.content-center-horizontal {
+	justify-content: center;
+}
+.content-center-vertical {
+	align-items: center;
+}
+.flex {
+	display:  -webkit-box;
+	display: -webkit-flex;
+	display:  -ms-flexbox;
+	display:	     flex;
+}
