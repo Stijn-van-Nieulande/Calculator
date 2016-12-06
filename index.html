@@ -9,7 +9,7 @@
 		
 		<script src="https://use.fontawesome.com/46cd7bd22b.js"></script>
 	</head>
-	<body class="flex content-center-vertical">
+	<body class="flex content-center-vertical" onload="calc.define();">
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 col-md-4 offset-md-4 animated bounceInDown">
@@ -18,71 +18,71 @@
 					<div class="jumbotron">
 						<div class="row">
 							<div class="col-sm-12 btn-col">
-								<input type="text" class="form-control" name="som" id="som" readonly>
+								<input type="text" class="form-control" name="som" id="calc_som" readonly>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-3 btn-col">
-								<button type="button" class="btn btn-danger btn-block" onclick="calculator.clear()">C</button>
+								<button type="button" class="btn btn-danger btn-block" onclick="calc.define()">C</button>
 							</div>
 							<div class="col-sm-9 btn-col">
-								<input type="text" class="form-control" name="calculate" id="calc" readonly>
+								<input type="text" class="form-control" name="calculate" id="calc_calc" readonly>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-3 btn-col">
-								<button type="button" class="btn btn-primary btn-block" onclick="calculator.add('7')">7</button>
+								<button type="button" class="btn btn-primary btn-block" onclick="calc.add('7')">7</button>
 							</div>
 							<div class="col-sm-3 btn-col">
-								<button type="button" class="btn btn-primary btn-block" onclick="calculator.add('8')">8</button>
+								<button type="button" class="btn btn-primary btn-block" onclick="calc.add('8')">8</button>
 							</div>
 							<div class="col-sm-3 btn-col">
-								<button type="button" class="btn btn-primary btn-block" onclick="calculator.add('9')">9</button>
+								<button type="button" class="btn btn-primary btn-block" onclick="calc.add('9')">9</button>
 							</div>
 							<div class="col-sm-3 btn-col">
-								<button type="button" class="btn btn-info btn-block" onclick="calculator.execExpr('+')">+</button>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-3 btn-col">
-								<button type="button" class="btn btn-primary btn-block" onclick="calculator.add('4')">4</button>
-							</div>
-							<div class="col-sm-3 btn-col">
-								<button type="button" class="btn btn-primary btn-block" onclick="calculator.add('5')">5</button>
-							</div>
-							<div class="col-sm-3 btn-col">
-								<button type="button" class="btn btn-primary btn-block" onclick="calculator.add('6')">6</button>
-							</div>
-							<div class="col-sm-3 btn-col">
-								<button type="button" class="btn btn-info btn-block" onclick="calculator.execExpr('-')">-</button>
+								<button type="button" class="btn btn-info btn-block" onclick="calc.execExpr('+')">+</button>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-3 btn-col">
-								<button type="button" class="btn btn-primary btn-block" onclick="calculator.add('1')">1</button>
+								<button type="button" class="btn btn-primary btn-block" onclick="calc.add('4')">4</button>
 							</div>
 							<div class="col-sm-3 btn-col">
-								<button type="button" class="btn btn-primary btn-block" onclick="calculator.add('2')">2</button>
+								<button type="button" class="btn btn-primary btn-block" onclick="calc.add('5')">5</button>
 							</div>
 							<div class="col-sm-3 btn-col">
-								<button type="button" class="btn btn-primary btn-block" onclick="calculator.add('3')">3</button>
+								<button type="button" class="btn btn-primary btn-block" onclick="calc.add('6')">6</button>
 							</div>
 							<div class="col-sm-3 btn-col">
-								<button type="button" class="btn btn-info btn-block" onclick="calculator.execExpr('/')">/</button>
+								<button type="button" class="btn btn-info btn-block" onclick="calc.execExpr('-')">-</button>
 							</div>
 						</div>
 						<div class="row">
 							<div class="col-sm-3 btn-col">
-								<button type="button" class="btn btn-primary btn-block" onclick="calculator.add('0')">0</button>
+								<button type="button" class="btn btn-primary btn-block" onclick="calc.add('1')">1</button>
 							</div>
 							<div class="col-sm-3 btn-col">
-								<button type="button" class="btn btn-primary btn-block" onclick="calculator.add('.')">.</button>
+								<button type="button" class="btn btn-primary btn-block" onclick="calc.add('2')">2</button>
 							</div>
 							<div class="col-sm-3 btn-col">
-								<button type="button" class="btn btn-success btn-block" onclick="calculator.calc()">=</button>
+								<button type="button" class="btn btn-primary btn-block" onclick="calc.add('3')">3</button>
 							</div>
 							<div class="col-sm-3 btn-col">
-								<button type="button" class="btn btn-info btn-block" onclick="calculator.execExpr('*')">x</button>
+								<button type="button" class="btn btn-info btn-block" onclick="calc.execExpr('/')">/</button>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-sm-3 btn-col">
+								<button type="button" class="btn btn-primary btn-block" onclick="calc.add('0')">0</button>
+							</div>
+							<div class="col-sm-3 btn-col">
+								<button type="button" class="btn btn-primary btn-block" onclick="calc.add('.')">.</button>
+							</div>
+							<div class="col-sm-3 btn-col">
+								<button type="button" class="btn btn-success btn-block" onclick="calc.calc()">=</button>
+							</div>
+							<div class="col-sm-3 btn-col">
+								<button type="button" class="btn btn-info btn-block" onclick="calc.execExpr('*')">x</button>
 							</div>
 						</div>
 					</div>

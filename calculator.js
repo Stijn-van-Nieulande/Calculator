@@ -1,65 +1,54 @@
-var calcStringOLD = "";
-var calcStringNEW = "";
-var lastExpression = "";
-var somstring = "";
-var calculated = false;
-var first = true;
-var calculator = {};
-
-calculator.add = function (s) {
-	if (first) {
-		calcStringOLD += s;
-	} else {
-		calcStringNEW += s;
+var calc = {};
+calc.define = function () {
+	calc.calcStringOLD = calc.calcStringNEW = calc.lastExpression = calc.somstring = "";
+	calc.calculated = false;
+	calc.first = true;
+	calc.update();
+}
+calc.add = function (s) {
+	if (s === ".") {
+		s = calc.first ? ((calc.calcStringOLD.indexOf(".") !== -1) ? "" : s) : ((calc.calcStringNEW.indexOf(".") !== -1) ? "" : s);
 	}
-	somstring += s;
-	calculated = false;
-	calculator.update();
+	calc.first ? (calc.calcStringOLD += s) : (calc.calcStringNEW += s);
+	calc.somstring += s;
+	calc.calculated = false;
+	calc.update();
 }
-calculator.execExpr = function (s) {
-	calculator.calc();
-	calculated = false;
-	somstring += (" " + s + " ");
-	lastExpression = s;
-	calculator.update(true);
+calc.execExpr = function (s) {
+	calc.calc();
+	calc.calculated = false;
+	calc.somstring += (" " + s + " ");
+	calc.lastExpression = s;
+	calc.update(true);
 }
-calculator.clear = function () {
-	calcStringOLD = "";
-	calcStringNEW = "";
-	lastExpression = "";
-	somstring = "";
-	calculated = false;
-	first = true;
-	calculator.update();
-}
-calculator.calc = function () {
-	calcStringOLD = (calcStringOLD == "") ? 0 : calcStringOLD;
-	calcStringNEW = (calcStringNEW == "") ? 0 : calcStringNEW;
+calc.calc = function () {
+	calc.calcStringOLD = (calc.calcStringOLD == "") ? 0 : calc.calcStringOLD;
+	calc.calcStringNEW = (calc.calcStringNEW == "") ? 0 : calc.calcStringNEW;
 	
-	switch (lastExpression) {
+	switch (calc.lastExpression) {
 		case "+":
-			calcStringOLD = (parseFloat(calcStringOLD) + parseFloat(calcStringNEW));
+			calc.calcStringOLD = (parseFloat(calc.calcStringOLD) + parseFloat(calc.calcStringNEW));
 			break;
 		case "-":
-			calcStringOLD = (parseFloat(calcStringOLD) - parseFloat(calcStringNEW));
+			calc.calcStringOLD = (parseFloat(calc.calcStringOLD) - parseFloat(calc.calcStringNEW));
 			break;
 		case "/":
-			calcStringOLD = (parseFloat(calcStringOLD) / parseFloat(calcStringNEW));
+			calc.calcStringOLD = (parseFloat(calc.calcStringOLD) / parseFloat(calc.calcStringNEW));
 			break;
 		case "*":
-			calcStringOLD = (parseFloat(calcStringOLD) * parseFloat(calcStringNEW));
+			calc.calcStringOLD = (parseFloat(calc.calcStringOLD) * parseFloat(calc.calcStringNEW));
 			break;
 	}
-	calcStringNEW = "";
-	lastExpression = "";
-	calculated = true;
-	first = false;
-	calculator.update();
+	calc.calcStringNEW = calc.lastExpression = "";
+	calc.calculated = true;
+	calc.first = false;
+	calc.update();
 }
-calculator.update = function (somonly = false) {
+calc.update = function (somonly = false) {
+	console.log(calc.calcStringOLD + " | " + calc.calcStringNEW);
 	if (!somonly) {
-		calc.value = (calculated || first) ? calcStringOLD : calcStringNEW;
-		calc.value = Math.round(calc.value * 1000) / 1000;
+		document.getElementById("calc_calc").value = (calc.calculated || calc.first) ? calc.calcStringOLD : calc.calcStringNEW;
+		document.getElementById("calc_calc").value = Math.round(document.getElementById("calc_calc").value * 1000) / 1000;
 	}
-	som.value = somstring;
+	document.getElementById("calc_som").value = calc.somstring;
 }
